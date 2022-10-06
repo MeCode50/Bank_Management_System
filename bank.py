@@ -4,6 +4,7 @@
 #create a child class which will inherit from the parent class
 #create a method/function on user's withdrawal and deposit
 #create our second user 
+#print number of users
 
 # parent class 
 class User:
@@ -59,7 +60,6 @@ class Bank(User):
 
 user2 = Bank('muna', 53, 'male', )
 print(user2.user_details())
-print(user1.name, user1.age, user1.gender)
 print()
 print('Number of user/users, is/are:', User.no_of_user)
 print(" ")
