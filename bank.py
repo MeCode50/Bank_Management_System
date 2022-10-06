@@ -2,11 +2,14 @@
 #create a method or function to hold our user details
 #create our first user and print it's details
 #create a child class which will inherit from the parent class
-#create a method/function on user's withdrawal and deposit
+#create a method/function on user's withdrawal and deposit 
 #create our second user 
 #print number of users
+#create account number for each new user
 
 # parent class 
+
+
 class User:
     no_of_user = 0
     acc_num = 110023
@@ -17,6 +20,7 @@ class User:
         self.age = age
         self.gender = gender
         self.cus_acc_number = User.acc_num 
+        self.account_balance = 0
 
         User.no_of_user = User.no_of_user +1 
         User.acc_num = User.acc_num + 1 
@@ -55,16 +59,25 @@ class Bank(User):
             print(f'transaction successful. Current amount is  ', self.account_balance )
         else:
             print('insufficient funds. curent amount is ', self.account_balance  )
+
+# transfers
+    def transfers(self, other):
+        amount = int(input('how much do you want to transfer?: '))
+        print()
+        if amount <= self.account_balance:
+            self.account_balance = self.account_balance - amount
+            other.account_balance = other.account_balance + amount 
+            print('Transfer successful, current balance :', {self.account_balance})
+        else:
+            print("insufficient amount, balance:", {self.account_balance})
+    
             
-
-
-user2 = Bank('muna', 53, 'male', )
+            
+user2 = Bank('muna', 53, 'male' )
 print(user2.user_details())
 print()
 print('Number of user/users, is/are:', User.no_of_user)
 print(" ")
 print(user2.deposit ())
 print(user2.withdrawal ())
-#print('Number of user/users, is/are', BankUser.no_of_user)
-
-
+print(user2.transfers(user1))
